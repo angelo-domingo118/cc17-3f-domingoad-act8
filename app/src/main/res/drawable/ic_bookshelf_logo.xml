@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    
+    <!-- Bookshelf back panel -->
+    <path
+        android:fillColor="@color/surface_variant"
+        android:pathData="M2,3v18h20V3H2zM20,19H4V5h16V19z"/>
+    
+    <!-- Standing Book 1 - thick hardcover -->
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M5,7v10h3V7H5zM7.2,16H5.8V8h1.4V16z"/>
+    
+    <!-- Standing Book 2 - paperback -->
+    <path
+        android:fillColor="@color/secondary"
+        android:pathData="M8.5,8v9h2.5V8H8.5zM10.2,16H9V9h1.2V16z"/>
+    
+    <!-- Tilted Book -->
+    <path
+        android:fillColor="@color/primary_container"
+        android:pathData="M11.5,9.5l2,-1.5v8l-2,1.5V9.5z"/>
+    
+    <!-- Standing Book 3 - modern design -->
+    <path
+        android:fillColor="@color/secondary_container"
+        android:pathData="M14,7v10h2.5V7H14zM15.7,16h-1V8h1V16z"/>
+    
+    <!-- Standing Book 4 - classic leather -->
+    <path
+        android:fillColor="@color/on_primary_container"
+        android:pathData="M17,8v9h2V8H17zM18.2,16h-0.5V9h0.5V16z"/>
+    
+    <!-- Shelf detail -->
+    <path
+        android:fillColor="@color/outline"
+        android:pathData="M3,18h18v1H3z"/>
+    
+    <!-- Book details and textures -->
+    <path
+        android:fillColor="@color/on_surface_variant"
+        android:strokeWidth="0.1"
+        android:pathData="M5.8,8.5h0.7v0.5H5.8zM9,9.5h0.8v0.5H9zM14.7,8.5h0.5v0.5h-0.5zM17.5,9.5h0.3v0.5h-0.3z"/>
+</vector>

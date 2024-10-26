@@ -10,6 +10,7 @@ import com.example.bookshelfapp.R
 import com.example.bookshelfapp.data.model.Book
 import com.example.bookshelfapp.databinding.BottomSheetBookDetailsBinding
 import com.example.bookshelfapp.util.ensureHttpsImageUrl
+import com.example.bookshelfapp.util.fromHtml
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.chip.Chip
 
@@ -51,22 +52,30 @@ class BookDetailsBottomSheet : BottomSheetDialogFragment() {
             bookDetailPublisherTextView.text = publisherText
             bookDetailPublisherTextView.isVisible = publisherText.isNotEmpty()
 
-            // Description
-            bookDetailDescriptionTextView.text = book.volumeInfo.description
+            // Description with HTML formatting
+            book.volumeInfo.description?.let { description ->
+                bookDetailDescriptionTextView.text = description.fromHtml()
+            }
             bookDetailDescriptionLabel.isVisible = !book.volumeInfo.description.isNullOrEmpty()
             bookDetailDescriptionTextView.isVisible = !book.volumeInfo.description.isNullOrEmpty()
 
-            // Categories as chips
+            // Categories as chips with improved styling
             categoriesChipGroup.removeAllViews()
             book.volumeInfo.categories?.forEach { category ->
                 val chip = Chip(requireContext()).apply {
                     text = category
-                    setChipBackgroundColorResource(R.color.material_on_surface_stroke)
-                    setTextAppearance(com.google.android.material.R.style.TextAppearance_MaterialComponents_Chip)
+                    setChipBackgroundColorResource(R.color.surface_variant)
+                    setTextColor(resources.getColor(R.color.on_surface_variant, null))
+                    textSize = 14f
+                    isClickable = false
+                    setEnsureMinTouchTargetSize(false)
+                    chipMinHeight = resources.getDimensionPixelSize(R.dimen.chip_min_height).toFloat()
+                    chipStartPadding = 12f
+                    chipEndPadding = 12f
                 }
                 categoriesChipGroup.addView(chip)
             }
-            categoriesChipGroup.isVisible = !book.volumeInfo.categories.isNullOrEmpty()
+            categoriesScrollView.isVisible = !book.volumeInfo.categories.isNullOrEmpty()
 
             // Book cover
             bookDetailCoverImageView.load(secureBook.volumeInfo.imageLinks?.thumbnail) {

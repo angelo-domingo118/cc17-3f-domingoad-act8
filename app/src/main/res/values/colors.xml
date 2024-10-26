@@ -3,4 +3,26 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="material_on_surface_stroke">#1F000000</color>
+    
+    <!-- Warm brown as primary color - reminiscent of leather-bound books -->
+    <color name="seed">#8B4513</color>
+    <color name="primary">#8B4513</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="primary_container">#FFE5D0</color>
+    <color name="on_primary_container">#2C1810</color>
+
+    <!-- Aged paper color as secondary -->
+    <color name="secondary">#938069</color>
+    <color name="on_secondary">#FFFFFF</color>
+    <color name="secondary_container">#F5E6D3</color>
+    <color name="on_secondary_container">#2B2620</color>
+
+    <!-- Cream colored surface for paper-like background -->
+    <color name="surface">#FFFBF5</color>
+    <color name="on_surface">#1D1B17</color>
+    <color name="surface_variant">#F0E6D6</color>
+    <color name="on_surface_variant">#49443B</color>
+    
+    <!-- Warm gray for outlines -->
+    <color name="outline">#847869</color>
 </resources>

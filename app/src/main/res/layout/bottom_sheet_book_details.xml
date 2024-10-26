@@ -24,7 +24,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:lineSpacingMultiplier="1.1"
+            android:textColor="@color/on_surface"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/bookDetailCoverImageView"
             app:layout_constraintTop_toTopOf="parent"
@@ -35,7 +38,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textAppearance="?attr/textAppearanceBody1"
+            android:textSize="18sp"
+            android:textColor="@color/primary"
+            android:lineSpacingMultiplier="1.1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/bookDetailTitleTextView"
             app:layout_constraintTop_toBottomOf="@id/bookDetailTitleTextView"
@@ -46,43 +51,60 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textAppearance="?attr/textAppearanceBody2"
+            android:textSize="16sp"
+            android:textColor="@color/secondary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/bookDetailTitleTextView"
             app:layout_constraintTop_toBottomOf="@id/bookDetailAuthorsTextView"
             tools:text="Publisher • 2023" />
 
+        <!-- Categories ChipGroup with horizontal scrolling -->
+        <HorizontalScrollView
+            android:id="@+id/categoriesScrollView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bookDetailCoverImageView">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/categoriesChipGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:singleLine="true"
+                app:chipSpacingHorizontal="8dp" />
+
+        </HorizontalScrollView>
+
+        <!-- Description Label -->
         <TextView
             android:id="@+id/bookDetailDescriptionLabel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:text="Description"
-            android:textAppearance="?attr/textAppearanceSubtitle1"
+            android:textSize="20sp"
             android:textStyle="bold"
+            android:textColor="@color/on_surface"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/bookDetailCoverImageView" />
+            app:layout_constraintTop_toBottomOf="@id/categoriesScrollView" />
 
+        <!-- Description Text -->
         <TextView
             android:id="@+id/bookDetailDescriptionTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textAppearance="?attr/textAppearanceBody2"
+            android:textSize="16sp"
+            android:lineSpacingMultiplier="1.2"
+            android:textColor="@color/on_surface"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/bookDetailDescriptionLabel"
             tools:text="Book description" />
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/categoriesChipGroup"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/bookDetailDescriptionTextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

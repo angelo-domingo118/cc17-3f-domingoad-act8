@@ -19,6 +19,11 @@ class BookshelfViewModel(private val repository: BooksRepository) : ViewModel() 
     private val _error = MutableLiveData<String?>()
     val error: LiveData<String?> = _error
 
+    init {
+        // Load initial books when ViewModel is created
+        searchBooks("dogs")
+    }
+
     fun searchBooks(query: String) {
         viewModelScope.launch {
             try {

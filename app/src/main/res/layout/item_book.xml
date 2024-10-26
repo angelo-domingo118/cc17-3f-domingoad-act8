@@ -23,14 +23,42 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/backgrounds/scenic" />
 
+        <!-- Info indicator icon -->
+        <ImageView
+            android:id="@+id/infoIndicator"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="8dp"
+            android:alpha="0.9"
+            android:background="@drawable/info_indicator_background"
+            android:padding="4dp"
+            android:src="@drawable/ic_info"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
+        <!-- Title container with gradient background -->
+        <View
+            android:id="@+id/titleBackground"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/title_gradient_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bookCoverImageView" />
+
         <TextView
             android:id="@+id/bookTitleTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="2"
-            android:padding="8dp"
-            android:textAppearance="?attr/textAppearanceBody2"
+            android:padding="12dp"
+            android:textColor="@color/on_surface"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:fontFamily="serif"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
