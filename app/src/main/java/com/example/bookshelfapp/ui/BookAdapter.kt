@@ -11,21 +11,24 @@ import com.example.bookshelfapp.data.model.Book
 import com.example.bookshelfapp.databinding.ItemBookBinding
 import com.example.bookshelfapp.util.ensureHttpsImageUrl
 
-class BookAdapter : ListAdapter<Book, BookAdapter.BookViewHolder>(BookDiffCallback()) {
+class BookAdapter(private val onBookClick: (Book) -> Unit) : ListAdapter<Book, BookAdapter.BookViewHolder>(BookDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
         val binding = ItemBookBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return BookViewHolder(binding)
+        return BookViewHolder(binding, onBookClick)
     }
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    class BookViewHolder(private val binding: ItemBookBinding) : RecyclerView.ViewHolder(binding.root) {
+    class BookViewHolder(
+        private val binding: ItemBookBinding,
+        private val onBookClick: (Book) -> Unit
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(book: Book) {
+            binding.root.setOnClickListener { onBookClick(book) }
             binding.bookTitleTextView.text = book.volumeInfo.title
-            // Use the ensureHttpsImageUrl extension
             val secureBook = book.ensureHttpsImageUrl()
             binding.bookCoverImageView.load(secureBook.volumeInfo.imageLinks?.thumbnail) {
                 crossfade(true)

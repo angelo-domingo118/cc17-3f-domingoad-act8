@@ -6,9 +6,11 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.bookshelfapp.data.model.Book
 import com.example.bookshelfapp.data.repository.BooksRepository
 import com.example.bookshelfapp.databinding.ActivityMainBinding
 import com.example.bookshelfapp.ui.BookAdapter
+import com.example.bookshelfapp.ui.BookDetailsBottomSheet
 import com.example.bookshelfapp.ui.BookshelfViewModel
 import com.example.bookshelfapp.ui.BookshelfViewModelFactory
 import com.google.android.material.snackbar.Snackbar
@@ -19,7 +21,9 @@ class MainActivity : AppCompatActivity() {
     private val viewModel: BookshelfViewModel by viewModels { 
         BookshelfViewModelFactory(BooksRepository()) 
     }
-    private val bookAdapter = BookAdapter()
+    private val bookAdapter = BookAdapter { book ->
+        showBookDetails(book)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,5 +74,10 @@ class MainActivity : AppCompatActivity() {
                 Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG).show()
             }
         }
+    }
+
+    private fun showBookDetails(book: Book) {
+        BookDetailsBottomSheet.newInstance(book)
+            .show(supportFragmentManager, "BookDetailsBottomSheet")
     }
 }
