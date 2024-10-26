@@ -9,6 +9,7 @@ import coil.load
 import com.example.bookshelfapp.R
 import com.example.bookshelfapp.data.model.Book
 import com.example.bookshelfapp.databinding.ItemBookBinding
+import com.example.bookshelfapp.util.ensureHttpsImageUrl
 
 class BookAdapter : ListAdapter<Book, BookAdapter.BookViewHolder>(BookDiffCallback()) {
 
@@ -24,7 +25,9 @@ class BookAdapter : ListAdapter<Book, BookAdapter.BookViewHolder>(BookDiffCallba
     class BookViewHolder(private val binding: ItemBookBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(book: Book) {
             binding.bookTitleTextView.text = book.volumeInfo.title
-            binding.bookCoverImageView.load(book.volumeInfo.imageLinks?.thumbnail) {
+            // Use the ensureHttpsImageUrl extension
+            val secureBook = book.ensureHttpsImageUrl()
+            binding.bookCoverImageView.load(secureBook.volumeInfo.imageLinks?.thumbnail) {
                 crossfade(true)
                 placeholder(R.drawable.ic_book_placeholder)
                 error(R.drawable.ic_book_placeholder)

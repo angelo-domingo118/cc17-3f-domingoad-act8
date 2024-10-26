@@ -2,6 +2,7 @@ package com.example.bookshelfapp.data.repository
 
 import com.example.bookshelfapp.data.api.RetrofitInstance
 import com.example.bookshelfapp.data.model.Book
+import com.example.bookshelfapp.util.ensureHttpsImageUrl // Add this import
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
@@ -16,7 +17,7 @@ class BooksRepository {
         bookIds.map { id ->
             async {
                 try {
-                    service.getBookDetails(id)
+                    service.getBookDetails(id).ensureHttpsImageUrl()
                 } catch (e: Exception) {
                     null
                 }
